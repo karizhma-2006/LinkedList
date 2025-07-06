@@ -1,4 +1,5 @@
 https://www.geeksforgeeks.org/problems/finding-middle-element-in-a-linked-list/1
+1.did by myself
 class Solution {
   public:
     /* Should return data of middle node. If linked list is empty, then -1 */
@@ -21,3 +22,18 @@ class Solution {
         return temp->data;
     }
 };
+//2.nandy's soln:slow-fast pointer method(see youtube video)
+int getMiddle(Node *head)
+    {
+        // Your code here
+        Node *temp, *temp1;
+        temp=head,temp1=head->next;
+        while(temp1!=NULL && temp1->next!=NULL){
+            temp=temp->next;
+            temp1=temp1->next->next;
+        }
+        if(temp1==NULL){
+            return temp->data;
+        }
+        return temp->next->data;
+    }
