@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+struct Node
+{
+    int data;
+    Node *next;
+};
+int main() {
+    
+    Node *head=new Node();//struct Node *head=new struct Nod()e;
+    head->data=4;
+    head->next=NULL;
+    
+     Node *temp=new Node();// Node *temp=new Node;
+     temp->data=5;
+     temp->next=NULL;
+     head->next=temp;
+     temp=head;
+     while(temp!=NULL)
+     {
+         cout<<temp->data<<" ";
+         temp=temp->next;
+     }
+    return 0;
+}
