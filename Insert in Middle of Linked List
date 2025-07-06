@@ -1,0 +1,51 @@
+https://www.geeksforgeeks.org/problems/insert-in-middle-of-linked-list/1
+//1.did by muself
+class Solution {
+  public:
+    Node *insertInMiddle(Node *head, int x) {
+        // Code Here
+        Node *newnode=new Node(x);
+        if(head==NULL)
+        {
+            head=newnode;
+            return head;
+        }
+        Node* temp1=head;
+         Node* temp=head;
+         int cnt=0;
+        while(temp!=NULL)
+        {
+            temp=temp->next;
+            cnt++;
+        }
+        if(cnt%2==0)
+            cnt=cnt/2;
+        else
+            cnt=(cnt/2)+1;
+        int cnt1=1;
+        while(cnt1<cnt)
+        {
+            temp1=temp1->next;
+            cnt1++;
+        }
+        newnode->next=temp1->next;
+        temp1->next=newnode;
+       return head;        
+    }
+};
+//2.nandy's soln-can't understand
+Node* insertInMiddle(Node* head, int x)
+{
+	// Code here
+	Node *temp, *temp1;
+	temp=head;
+	temp1=head;
+	while(temp1->next!=NULL && temp1->next->next!=NULL){
+	        temp1=temp1->next->next;
+	        temp=temp->next;
+	}
+	Node *newnode=new Node(x);
+	newnode->next=temp->next;
+	temp->next=newnode;
+	return head;
+}
