@@ -22,7 +22,7 @@ class Solution {
         {
             if(i==k)
             {
-                if(temp->next==NULL)
+                if(temp->next==NULL)//this condition we donn't need bec anyways if temp->next is 0 then prev->next also be 0
                 {
                     prev->next=NULL;
                     i=0;
