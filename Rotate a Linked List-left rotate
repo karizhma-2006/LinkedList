@@ -1,4 +1,5 @@
 https://www.geeksforgeeks.org/problems/rotate-a-linked-list/1
+//right rotate in note
 struct Node {
     int data;
     struct Node *next;
@@ -9,7 +10,6 @@ struct Node {
 };
 
 */
-
 class Solution {
   public:
     Node* rotate(Node* head, int k) {
