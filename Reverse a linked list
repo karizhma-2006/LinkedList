@@ -1,13 +1,11 @@
 https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1?page=1
-/* Linked List Node structure:
 
+//1.optimised soln
 struct Node
 {
     int data;
     struct Node *next;
 }
-
-*/
 
 class Solution {
   public:
@@ -23,5 +21,63 @@ class Solution {
             head=newnode;
         }
         return temp;
+    }
+};
+//2.brute force-using stack
+struct Node
+{
+    int data;
+    struct Node *next;
+}
+class Solution {
+  public:
+    Node* reverseList(struct Node* head) {
+        // code here
+        stack<int>s;
+        Node *temp=head;
+        while(temp!=NULL)
+        {
+            s.push(temp->data);
+            temp=temp->next;
+        }
+        temp=head;
+        while(!s.empty())
+        {
+            temp->data=s.top();
+            temp=temp->next;
+            s.pop();
+        }
+        return head;
+    }
+};
+
+//3.brute force-using vector(array method)
+
+struct Node
+{
+    int data;
+    struct Node *next;
+}
+
+class Solution {
+  public:
+    Node* reverseList(struct Node* head) {
+        // code here
+        vector<int>arr;
+        Node *temp=head;
+       
+        while(temp!=NULL)
+        {
+            arr.push_back(temp->data);
+            temp=temp->next;
+            
+        }
+        temp=head;
+       for(int i=arr.size()-1;i>=0;i--)
+       {
+            temp->data=arr[i];
+            temp=temp->next;
+       }
+       return head;
     }
 };
