@@ -1,0 +1,41 @@
+https://www.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1
+
+    struct node
+    {
+        int data;
+        struct Node* next;
+
+        Node(int x){
+            data = x;
+            next = NULL;
+        }
+
+    }*head;
+
+class Solution {
+  public:
+    Node *reverseKGroup(Node *head, int k) {
+        // code here
+       stack<int>s;//you can also use array
+        Node *temp=head;
+        Node *temp1=head;
+        int cnt=0;
+        while(temp!=NULL)
+        {
+            while(cnt<k && temp!=NULL)
+            {
+                s.push(temp->data);
+                temp=temp->next;
+                cnt++;
+            }
+            while(cnt>0)//or while(!stack.empty())
+            {
+                temp1->data=s.top();
+                temp1=temp1->next;
+                s.pop();
+                cnt--;
+            }
+        }
+        return head;
+    }
+};
