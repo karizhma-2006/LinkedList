@@ -1,36 +1,55 @@
 https://www.geeksforgeeks.org/problems/insert-in-middle-of-linked-list/1
 //1.did by muself
+/*
+struct Node {
+  int data;
+  struct Node *next;
+  Node(int x) {
+    data = x;
+    next = NULL;
+  }
+};
+*/
+
+// Function to insert a node in the middle of the linked list.
 class Solution {
   public:
     Node *insertInMiddle(Node *head, int x) {
         // Code Here
         Node *newnode=new Node(x);
+        Node *temp=head;
+        Node *prev=NULL;
+        int n=0,cnt=0;
         if(head==NULL)
         {
             head=newnode;
             return head;
         }
-        Node* temp1=head;
-         Node* temp=head;
-         int cnt=0;
         while(temp!=NULL)
         {
+            n++;
             temp=temp->next;
-            cnt++;
+             
         }
-        if(cnt%2==0)
-            cnt=cnt/2;
+        temp=head;
+        if(n%2==0)
+            n=(n/2);
         else
-            cnt=(cnt/2)+1;
-        int cnt1=1;
-        while(cnt1<cnt)
+            n=(n/2)+1;
+        while(temp!=NULL)
         {
-            temp1=temp1->next;
-            cnt1++;
+            
+            if(cnt==n)
+                {
+                    newnode->next=prev->next;
+                    prev->next=newnode;
+                }
+                prev=temp;
+                temp=temp->next;
+                cnt++;
         }
-        newnode->next=temp1->next;
-        temp1->next=newnode;
-       return head;        
+        return head;
+        
     }
 };
 //2.nandy's soln-can't understand
