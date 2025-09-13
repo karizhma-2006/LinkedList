@@ -1,42 +1,41 @@
 https://www.geeksforgeeks.org/problems/delete-a-node-in-single-linked-list/1
 1.did by myself
-struct Node
-{
+/*
+class Node {
+public:
     int data;
-    struct Node* next;
+    Node* next;
 
-    Node(int x){
-        data = x;
-        next = NULL;
+    Node(int data) {
+        this->data = data;
+        this->next = nullptr;
     }
 };
 */
 class Solution {
   public:
-    /* Function to delete a node from a linked list */
     Node* deleteNode(Node* head, int x) {
         // code here
-         int cnt=1;
-         if(head==NULL)
-            return NULL;
+        Node * temp=head;
+         Node * prev=NULL;
+        int cnt=0;
         if(x==1)
         {
             head=head->next;
             return head;
         }
-        Node*temp=head;
-        Node *prev=NULL;
-        while(temp!=NULL)//use for loop
+        while(temp->next!=NULL)
         {
+            cnt++;
             if(cnt==x)
             {
                 prev->next=temp->next;
-               break;
+                return head;
             }
             prev=temp;
             temp=temp->next;
-            cnt++;
         }
+        prev->next=NULL;
         return head;
     }
 };
