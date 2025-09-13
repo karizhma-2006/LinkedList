@@ -1,20 +1,21 @@
 https://www.geeksforgeeks.org/problems/rotate-a-linked-list/1
-//right rotate in note
-struct Node {
+/*
+class Node {
     int data;
-    struct Node *next;
+    Node* next;
+
     Node(int x) {
         data = x;
         next = NULL;
     }
 };
-
 */
+
 class Solution {
   public:
     Node* rotate(Node* head, int k) {
-        // Your code here
-        Node *temp=head;
+        // code here
+         Node *temp=head;
         int n=1;
         while(temp->next!=NULL)
         {
@@ -28,16 +29,13 @@ class Solution {
             ptr=ptr->next;
         }
         ptr->next=head;
-        head=head->next;
-        int i=1;
-        while(i<=k)
+       int i=k;
+        while(i--)
         {
             ptr=ptr->next;
-            i++;
         }
         head=ptr->next;
         ptr->next=NULL;
         return head;
-        
     }
 };
